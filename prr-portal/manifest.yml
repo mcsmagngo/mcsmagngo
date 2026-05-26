@@ -1,0 +1,31 @@
+modules:
+  jira:projectPage:
+    - key: prr-portal-page
+      resource: prr-ui
+      resolver:
+        function: resolver
+      title: Portal PRR de Observabilidade
+      layout: basic
+
+  function:
+    - key: resolver
+      handler: index.handler
+
+resources:
+  - key: prr-ui
+    path: static/prr-ui/build
+
+permissions:
+  scopes:
+    - read:jira-work
+    - write:jira-work
+    - read:confluence-content.all
+    - write:confluence-content
+    - read:confluence-space.summary
+    - storage:app
+
+app:
+  id: ari:cloud:ecosystem::app/prr-observability-portal
+  name: Portal PRR de Observabilidade
+  runtime:
+    name: nodejs18.x
