@@ -1,0 +1,25 @@
+{
+  "name": "prr-observability-portal",
+  "version": "1.0.0",
+  "description": "Portal PRR de Observabilidade - Jira Cloud Forge App",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "cd static/prr-ui && npm run build",
+    "install:all": "npm install && cd static/prr-ui && npm install",
+    "lint": "eslint src/",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@forge/api": "^7.2.1",
+    "@forge/resolver": "^1.8.0"
+  },
+  "devDependencies": {
+    "@forge/cli": "^12.21.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}
