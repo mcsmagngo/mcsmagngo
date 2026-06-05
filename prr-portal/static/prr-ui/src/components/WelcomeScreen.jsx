@@ -13,6 +13,16 @@ const OPTIONS = [
     destaque: true,
   },
   {
+    id: 'saude',
+    icon: '🔭',
+    titulo: 'Saúde do Sistema',
+    descricao: 'Visualize alertas ativos, status de serviços e painéis do Grafana em tempo real. Correlacionado com os domínios do PRR.',
+    cta: 'Ver Saúde',
+    cor: '#00b8d9',
+    corFundo: '#e6fcff',
+    destaque: true,
+  },
+  {
     id: 'validar_doc',
     icon: '🔍',
     titulo: 'Validar Documento',
@@ -59,6 +69,7 @@ export default function WelcomeScreen({ onSelect, prrVersion }) {
         buscar_faq: 'buscar_faq',
         ver_historico: 'historico',
         configurar: 'configurar',
+        saude: 'saude',
       };
       onSelect(intentMap[result.intent] || 'novo_prr', analyzingInput);
     } catch {

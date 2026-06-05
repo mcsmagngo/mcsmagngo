@@ -9,6 +9,7 @@ import SettingsPanel from './components/SettingsPanel';
 import DocValidatorScreen from './components/DocValidatorScreen';
 import SearchScreen from './components/SearchScreen';
 import HistoryScreen from './components/HistoryScreen';
+import SystemHealthScreen from './components/SystemHealthScreen';
 
 const SESSION_ID = 'prr-session-' + Date.now().toString(36);
 
@@ -48,6 +49,7 @@ const SCREENS = {
   VALIDATE_DOC: 'validate_doc',
   SEARCH: 'search',
   HISTORY: 'history',
+  HEALTH: 'health',
   SETTINGS: 'settings',
 };
 
@@ -180,6 +182,7 @@ export default function App() {
     else if (option === 'validar_doc') setScreen(SCREENS.VALIDATE_DOC);
     else if (option === 'buscar_faq') { setSearchInitialQuery(query || ''); setScreen(SCREENS.SEARCH); }
     else if (option === 'historico') setScreen(SCREENS.HISTORY);
+    else if (option === 'saude') setScreen(SCREENS.HEALTH);
     else if (option === 'configurar') setScreen(SCREENS.SETTINGS);
   };
 
@@ -235,6 +238,7 @@ export default function App() {
             {scoreSummary && <button className={`topbar-nav-btn ${screen === SCREENS.RESULT ? 'active' : ''}`} onClick={() => setScreen(SCREENS.RESULT)}>📊 Resultado</button>}
             <button className={`topbar-nav-btn ${screen === SCREENS.VALIDATE_DOC ? 'active' : ''}`} onClick={() => setScreen(SCREENS.VALIDATE_DOC)}>🔍 Validar Doc</button>
             <button className={`topbar-nav-btn ${screen === SCREENS.SEARCH ? 'active' : ''}`} onClick={() => setScreen(SCREENS.SEARCH)}>🔎 Buscar</button>
+            <button className={`topbar-nav-btn ${screen === SCREENS.HEALTH ? 'active' : ''}`} onClick={() => setScreen(SCREENS.HEALTH)}>🔭 Saúde</button>
             <button className={`topbar-nav-btn ${screen === SCREENS.HISTORY ? 'active' : ''}`} onClick={() => setScreen(SCREENS.HISTORY)}>📈 Histórico</button>
             <button className={`topbar-nav-btn ${screen === SCREENS.SETTINGS ? 'active' : ''}`} onClick={() => setScreen(SCREENS.SETTINGS)}>⚙</button>
           </nav>
@@ -357,6 +361,14 @@ export default function App() {
       {/* ── Search ───────────────────────────────────────────────────────────── */}
       {screen === SCREENS.SEARCH && (
         <SearchScreen onBack={() => setScreen(SCREENS.WELCOME)} initialQuery={searchInitialQuery} />
+      )}
+
+      {/* ── System Health ────────────────────────────────────────────────────── */}
+      {screen === SCREENS.HEALTH && (
+        <SystemHealthScreen
+          onBack={() => setScreen(SCREENS.WELCOME)}
+          onOpenSettings={() => setScreen(SCREENS.SETTINGS)}
+        />
       )}
 
       {/* ── History ──────────────────────────────────────────────────────────── */}

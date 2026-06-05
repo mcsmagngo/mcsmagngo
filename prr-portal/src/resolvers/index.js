@@ -14,6 +14,13 @@ const {
 const { validateDocument } = require('../services/docValidatorService');
 const { searchAll, getArtifactById } = require('../services/searchService');
 const {
+  getSystemHealth,
+  getAlerts,
+  queryMetric,
+  getDashboards,
+  checkHealth,
+} = require('../services/grafanaService');
+const {
   saveAssessment,
   getAssessment,
   saveDraft,
@@ -295,4 +302,52 @@ module.exports = {
   getAdaptiveHints,
   updateSettings,
   getPortalSettings,
+  getSystemHealthData,
+  getGrafanaAlerts,
+  queryGrafanaMetric,
+  getGrafanaDashboards,
+  testGrafanaConnection,
 };
+
+// ─── Grafana / System Health ──────────────────────────────────────────────────
+
+async function getSystemHealthData({ forceRefresh } = {}) {
+  const settings = await getSettings();
+  const { grafanaUrl, grafanaApiKey, grafanaDatasourceUid, grafanaPanels } = settings;
+
+  if (!grafanaUrl) {
+    return {
+      configured: false,
+      message: 'Grafana não configurado. Informe a URL e API key nas Configurações.',
+    };
+  }
+
+  const health = await getSystemHealth(grafanaUrl, grafanaApiKey, grafanaDatasourceUid, grafanaPanels || []);
+  return { configured: true, ...health };
+}
+
+async function getGrafanaAlerts() {
+  const settings = await getSettings();
+  const { grafanaUrl, grafanaApiKey } = settings;
+  if (!grafanaUrl) throw new Error('Grafana não configurado.');
+  return getAlerts(grafanaUrl, grafanaApiKey);
+}
+
+async function queryGrafanaMetric({ datasourceUid, promQuery }) {
+  const settings = await getSettings();
+  const { grafanaUrl, grafanaApiKey } = settings;
+  if (!grafanaUrl) throw new Error('Grafana não configurado.');
+  return queryMetric(grafanaUrl, grafanaApiKey, datasourceUid, promQuery);
+}
+
+async function getGrafanaDashboards({ query } = {}) {
+  const settings = await getSettings();
+  const { grafanaUrl, grafanaApiKey } = settings;
+  if (!grafanaUrl) throw new Error('Grafana não configurado.');
+  return getDashboards(grafanaUrl, grafanaApiKey, query);
+}
+
+async function testGrafanaConnection({ grafanaUrl, grafanaApiKey }) {
+  if (!grafanaUrl) throw new Error('URL do Grafana é obrigatória.');
+  return checkHealth(grafanaUrl, grafanaApiKey);
+}

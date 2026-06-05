@@ -39,4 +39,11 @@ resolver.define('getAdaptiveHints', async ({ payload }) => resolvers.getAdaptive
 resolver.define('updateSettings', async ({ payload }) => resolvers.updateSettings(payload));
 resolver.define('getPortalSettings', async () => resolvers.getPortalSettings());
 
+// Grafana / System Health
+resolver.define('getSystemHealth', async ({ payload }) => resolvers.getSystemHealthData(payload));
+resolver.define('getGrafanaAlerts', async () => resolvers.getGrafanaAlerts());
+resolver.define('queryGrafanaMetric', async ({ payload }) => resolvers.queryGrafanaMetric(payload));
+resolver.define('getGrafanaDashboards', async ({ payload }) => resolvers.getGrafanaDashboards(payload));
+resolver.define('testGrafanaConnection', async ({ payload }) => resolvers.testGrafanaConnection(payload));
+
 exports.handler = resolver.getDefinitions();

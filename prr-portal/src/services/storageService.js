@@ -67,6 +67,11 @@ async function getSettings() {
     confluenceSyncEnabled: true,
     remediationEnabled: true,
     telemetryEnabled: true,
+    grafanaUrl: '',
+    grafanaApiKey: '',
+    grafanaDatasourceUid: '',
+    grafanaPanels: [],
+    healthRefreshInterval: 60,
   };
 }
 
