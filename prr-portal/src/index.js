@@ -5,52 +5,38 @@ const resolvers = require('./resolvers/index');
 
 const resolver = new Resolver();
 
-resolver.define('getQuestionnaire', async () => {
-  return resolvers.getQuestionnaire();
-});
+// Questionnaire & Form
+resolver.define('getQuestionnaire', async () => resolvers.getQuestionnaire());
+resolver.define('loadDraft', async ({ payload }) => resolvers.loadDraft(payload));
+resolver.define('saveDraft', async ({ payload }) => resolvers.saveDraftResolver(payload));
+resolver.define('submitAssessment', async ({ payload }) => resolvers.submitAssessment(payload));
+resolver.define('calculateAdherenceScore', async ({ payload }) => resolvers.calculateAdherenceScore(payload));
+resolver.define('getAssessmentById', async ({ payload }) => resolvers.getAssessmentById(payload));
+resolver.define('getAssessmentHistory', async ({ payload }) => resolvers.getAssessmentHistory(payload));
 
-resolver.define('loadDraft', async ({ payload }) => {
-  return resolvers.loadDraft(payload);
-});
+// Rovo Cognitive Layer
+resolver.define('rovoAnalyzeIntent', async ({ payload }) => resolvers.rovoAnalyzeIntent(payload));
+resolver.define('rovoExplainGap', async ({ payload }) => resolvers.rovoExplainGap(payload));
+resolver.define('rovoGetRecommendations', async ({ payload }) => resolvers.rovoGetRecommendations(payload));
+resolver.define('rovoSearchFaqs', async ({ payload }) => resolvers.rovoSearchFaqs(payload));
 
-resolver.define('saveDraft', async ({ payload }) => {
-  return resolvers.saveDraftResolver(payload);
-});
+// Document Validation
+resolver.define('validateConfluenceDoc', async ({ payload }) => resolvers.validateConfluenceDoc(payload));
 
-resolver.define('submitAssessment', async ({ payload }) => {
-  return resolvers.submitAssessment(payload);
-});
+// Search & Artifacts
+resolver.define('searchArtifacts', async ({ payload }) => resolvers.searchArtifacts(payload));
+resolver.define('installArtifact', async ({ payload }) => resolvers.installArtifact(payload));
 
-resolver.define('calculateAdherenceScore', async ({ payload }) => {
-  return resolvers.calculateAdherenceScore(payload);
-});
+// Confluence & Jira
+resolver.define('syncFaqPages', async ({ payload }) => resolvers.syncFaqPagesResolver(payload));
+resolver.define('generateRemediationPlan', async ({ payload }) => resolvers.generateRemediationPlan(payload));
 
-resolver.define('syncFaqPages', async ({ payload }) => {
-  return resolvers.syncFaqPagesResolver(payload);
-});
+// Telemetry & Hints
+resolver.define('trackEvent', async ({ payload }) => resolvers.trackEvent(payload));
+resolver.define('getAdaptiveHints', async ({ payload }) => resolvers.getAdaptiveHints(payload));
 
-resolver.define('generateRemediationPlan', async ({ payload }) => {
-  return resolvers.generateRemediationPlan(payload);
-});
-
-resolver.define('getAssessmentById', async ({ payload }) => {
-  return resolvers.getAssessmentById(payload);
-});
-
-resolver.define('trackEvent', async ({ payload }) => {
-  return resolvers.trackEvent(payload);
-});
-
-resolver.define('getAdaptiveHints', async ({ payload }) => {
-  return resolvers.getAdaptiveHints(payload);
-});
-
-resolver.define('updateSettings', async ({ payload }) => {
-  return resolvers.updateSettings(payload);
-});
-
-resolver.define('getPortalSettings', async () => {
-  return resolvers.getPortalSettings();
-});
+// Settings
+resolver.define('updateSettings', async ({ payload }) => resolvers.updateSettings(payload));
+resolver.define('getPortalSettings', async () => resolvers.getPortalSettings());
 
 exports.handler = resolver.getDefinitions();
