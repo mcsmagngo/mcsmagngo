@@ -23,6 +23,10 @@ permissions:
     - write:confluence-content
     - read:confluence-space.summary
     - storage:app
+  external:
+    fetch:
+      backend:
+        - '*'
 
 app:
   id: ari:cloud:ecosystem::app/prr-observability-portal

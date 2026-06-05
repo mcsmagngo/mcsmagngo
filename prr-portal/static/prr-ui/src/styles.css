@@ -1338,3 +1338,354 @@ body {
   font-size: 12px;
   color: #97a0af;
 }
+
+/* ==============================
+   Settings Panel Sections
+   ============================== */
+.settings-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f4f5f7;
+}
+
+.settings-section:last-of-type { border-bottom: none; }
+
+.settings-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #172b4d;
+  margin-bottom: 14px;
+}
+
+/* ==============================
+   System Health Screen
+   ============================== */
+.health-screen { padding: 0; border: none; background: transparent; }
+
+.health-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid #dfe1e6;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.health-header h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+
+.grafana-version-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  background: #e6fcff;
+  color: #006884;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.grafana-db-badge {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 2px 8px;
+  background: #e3fcef;
+  color: #006644;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.health-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.refresh-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f4f5f7;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.refresh-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: #5e6c84;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.refresh-btn:hover { background: rgba(255,255,255,0.7); }
+.refresh-btn.active { background: #fff; color: '#0052cc'; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+
+/* Overall Status Banner */
+.overall-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border: 2px solid;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+.overall-status-icon { font-size: 28px; flex-shrink: 0; }
+
+.overall-status-label {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.overall-status-summary {
+  font-size: 13px;
+  color: #5e6c84;
+}
+
+/* Health Cards Row */
+.health-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.health-card {
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.health-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.health-card-icon { font-size: 18px; }
+
+.health-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #5e6c84;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.health-card-value {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.health-card-subtitle {
+  font-size: 11px;
+  color: #5e6c84;
+}
+
+/* Domain Health Grid */
+.domain-health-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.domain-health-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 2px solid;
+  border-radius: 8px;
+}
+
+/* Alert Rows */
+.alert-row {
+  border-left: 4px solid;
+  background: #fff;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.alert-row-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.alert-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.alert-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #172b4d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alert-service {
+  font-size: 11px;
+  color: #5e6c84;
+}
+
+.severity-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.silenced-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  background: #f4f5f7;
+  color: #97a0af;
+}
+
+.alert-time {
+  font-size: 11px;
+  color: '#97a0af';
+  white-space: nowrap;
+}
+
+.alert-detail {
+  padding: 8px 12px 12px 30px;
+  background: #fafbff;
+  border-top: 1px solid #f4f5f7;
+}
+
+/* Grafana Panel Embed */
+.panels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 16px;
+}
+
+.panel-embed-wrapper {
+  border: 1px solid #dfe1e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.panel-embed-title {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: '#172b4d';
+  border-bottom: 1px solid #dfe1e6;
+  background: '#f4f5f7';
+}
+
+.panel-iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  display: block;
+}
+
+.panel-loading, .panel-error, .panel-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  height: 120px;
+  padding: 20px;
+  text-align: center;
+}
+
+.panel-error {
+  font-size: 12px;
+  color: '#974f0c';
+  background: '#fffae6';
+}
+
+.panel-placeholder {
+  background: '#f4f5f7';
+}
+
+/* Dashboard List */
+.dashboard-list { display: flex; flex-direction: column; gap: 6px; }
+
+.dashboard-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #dfe1e6;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  gap: 12px;
+  transition: background 0.15s;
+}
+
+.dashboard-item:hover { background: #f8f9ff; border-color: #4c9aff; }
+
+.dashboard-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: '#172b4d';
+}
+
+.dashboard-item-folder {
+  font-size: 11px;
+  color: '#5e6c84';
+  margin-top: 2px;
+}
+
+/* Not configured state */
+.health-not-configured {
+  text-align: center;
+  padding: 48px 24px;
+  background: '#fff';
+  border: 1px solid '#dfe1e6';
+  border-radius: 8px;
+}
+
+.health-not-configured h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: '#172b4d';
+}
+
+.health-not-configured p {
+  font-size: 13px;
+  color: '#5e6c84';
+}

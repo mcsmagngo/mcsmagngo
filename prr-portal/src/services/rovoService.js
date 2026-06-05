@@ -27,11 +27,15 @@ const INTENTS = {
   BUSCAR_FAQ: 'buscar_faq',
   VER_HISTORICO: 'ver_historico',
   CONFIGURAR: 'configurar',
+  SAUDE: 'saude',
 };
 
 function analyzeIntent(userInput) {
   const text = (userInput || '').toLowerCase();
 
+  if (/saú|saude|health|grafana|alerta|alert|serviço|metrica|prometheus|monitor|status|uptime|down|up/i.test(text)) {
+    return { intent: INTENTS.SAUDE, confidence: 0.90 };
+  }
   if (/valid|document|doc|exist|arquivo|verific/i.test(text)) {
     return { intent: INTENTS.VALIDAR_DOC, confidence: 0.85 };
   }
